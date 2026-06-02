@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+text-align:center;
+color:white;
+overflow-x:hidden;
+}
+
+/* Welcome Page */
+#startPage{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+#startPage h1{
+font-size:40px;
+margin-bottom:20px;
+}
+
+.buttons{
+position:relative;
+width:300px;
+height:100px;
+margin-top:20px;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:10px;
+font-size:18px;
+cursor:pointer;
+}
+
+#yesBtn{
+background:green;
+color:white;
+}
+
+#noBtn{
+background:red;
+color:white;
+position:absolute;
+left:150px;
+}
+
+/* Main Page */
+#mainPage{
+display:none;
+padding:20px;
+}
+
+#countdown{
+background:white;
+color:#ff4d6d;
+display:inline-block;
+padding:20px;
+border-radius:15px;
+font-size:32px;
+font-weight:bold;
+margin:20px;
+}
+
+.gallery{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+margin-top:20px;
+}
+
+.gallery img{
+width:220px;
+height:220px;
+object-fit:cover;
+border-radius:15px;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+#messageBox{
+margin-top:20px;
+background:white;
+color:black;
+display:inline-block;
+padding:15px;
+border-radius:10px;
+font-size:20px;
+max-width:700px;
+}
+
+.letter{
+margin-top:30px;
+background:white;
+color:black;
+padding:20px;
+border-radius:15px;
+max-width:800px;
+margin-left:auto;
+margin-right:auto;
+line-height:1.8;
+}
+
+/* Floating Hearts */
+.heart{
+position:fixed;
+font-size:20px;
+animation:float 6s linear infinite;
+pointer-events:none;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh);
+opacity:1;
+}
+100%{
+transform:translateY(-100px);
+opacity:0;
+}
+}
+</style>
+</head>
+
+<body>
+
+<!-- FIRST PAGE -->
+<div id="startPage">
+
+<h1>🎉 A Special Surprise For You 🎉</h1>
+
+<p>Will you open this birthday surprise? ❤️</p>
+
+<div class="buttons">
+<button id="yesBtn">YES ❤️</button>
+<button id="noBtn">NO 😅</button>
+</div>
+
+</div>
+
+<!-- MAIN PAGE -->
+<div id="mainPage">
+
+<h1>💖 Birthday Countdown 💖</h1>
+
+<div id="countdown"></div>
+
+<br>
+
+<button onclick="playMusic()">▶ Play Music</button>
+<button onclick="pauseMusic()">⏸ Pause Music</button>
+
+<audio id="bgMusic">
+<source src="song.mpeg" type="audio/mp3">
+</audio>
+
+<h2 style="margin-top:30px;">📸 Beautiful Memories</h2>
+
+<div class="gallery">
+
+<img src="img1.jpeg"
+onclick="showMessage('You are one of the most special people in my life ❤️')">
+
+<img src="img2.jpeg"
+onclick="showMessage('Every memory with you is unforgettable 🌸')">
+
+<img src="img3.jpeg"
+onclick="showMessage('Your smile brightens every day 😊')">
+
+<img src="img4.jpeg"
+onclick="showMessage('Thank you for always supporting me 💕')">
+
+<img src="img5.jpeg"
+onclick="showMessage('You deserve all happiness in the world 🎂')">
+
+<img src="img6.jpeg"
+onclick="showMessage('Only a few more days until your big day 🎉')">
+
+<img src="img7.jpeg"
+onclick="showMessage('Can't wait to celebrate with you ❤️')">
+
+</div>
+
+<div id="messageBox">
+Click any image to reveal a special message ❤️
+</div>
+
+<div class="letter">
+
+<h2>💌 A Letter For You</h2>
+
+<p>
+Dear Friend,
+
+<br><br>
+
+Thank you for being such an amazing person in my life.
+
+Every memory we created together is precious.
+
+I am grateful for your friendship,
+your kindness and your support.
+
+I hope this little surprise makes you smile.
+
+May your birthday be filled with happiness,
+success and beautiful memories.
+
+❤️ With Lots Of Love ❤️
+
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+/* YES BUTTON */
+
+document.getElementById("yesBtn").onclick=function(){
+
+alert("❤️ Welcome To Your Birthday Surprise ❤️");
+
+document.getElementById("startPage").style.display="none";
+
+document.getElementById("mainPage").style.display="block";
+
+}
+
+/* NO BUTTON RUNS AWAY */
+
+const noBtn=document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover",()=>{
+
+let x=Math.random()*(window.innerWidth-120);
+let y=Math.random()*(window.innerHeight-120);
+
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+
+});
+
+/* COUNTDOWN */
+
+const birthday=new Date();
+
+birthday.setDate(birthday.getDate()+100);
+
+function updateCountdown(){
+
+const now=new Date();
+
+const diff=birthday-now;
+
+if(diff<=0){
+
+document.getElementById("countdown").innerHTML=
+"🎂 HAPPY BIRTHDAY 🎂";
+
+return;
+
+}
+
+const days=Math.floor(diff/(1000*60*60*24));
+const hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+const mins=Math.floor((diff%(1000*60*60))/(1000*60));
+const secs=Math.floor((diff%(1000*60))/1000);
+
+document.getElementById("countdown").innerHTML=
+days+" Days "+
+hours+" Hours "+
+mins+" Minutes "+
+secs+" Seconds";
+
+}
+
+setInterval(updateCountdown,1000);
+
+updateCountdown();
+
+/* IMAGE MESSAGE */
+
+function showMessage(text){
+
+document.getElementById("messageBox").innerHTML=text;
+
+}
+
+/* MUSIC */
+
+function playMusic(){
+
+document.getElementById("bgMusic").play();
+
+}
+
+function pauseMusic(){
+
+document.getElementById("bgMusic").pause();
+
+}
+
+/* FLOATING HEARTS */
+
+setInterval(()=>{
+
+let heart=document.createElement("div");
+
+heart.innerHTML="❤️";
+
+heart.classList.add("heart");
+
+heart.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},6000);
+
+},500);
+
+</script>
+
+</body>
+</html>
