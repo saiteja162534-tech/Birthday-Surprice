@@ -7,169 +7,160 @@
 
 <style>
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#ff758c,#ff7eb3);
-text-align:center;
-color:white;
-overflow-x:hidden;
-transition: background 0.5s ease;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    text-align:center;
+    color:white;
+    overflow-x:hidden;
+    transition: background 0.5s ease;
 }
 
 /* Welcome Page */
 #startPage{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 }
 
 #startPage h1{
-font-size:40px;
-margin-bottom:20px;
+    font-size:40px;
+    margin-bottom:20px;
 }
 
 .buttons{
-position:relative;
-width:300px;
-height:100px;
-margin-top:20px;
+    position:relative;
+    width:300px;
+    height:100px;
+    margin-top:20px;
 }
 
 button{
-padding:12px 25px;
-border:none;
-border-radius:10px;
-font-size:18px;
-cursor:pointer;
+    padding:12px 25px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
 }
 
 #yesBtn{
-background:green;
-color:white;
+    background:green;
+    color:white;
 }
 
 #noBtn{
-background:red;
-color:white;
-position:absolute;
-left:150px;
+    background:red;
+    color:white;
+    position:absolute;
+    left:150px;
 }
 
 /* Main Page */
 #mainPage{
-display:none;
-padding:20px;
+    display:none;
+    padding:20px;
 }
 
 #countdown{
-background:white;
-color:#ff4d6d;
-display:inline-block;
-padding:20px;
-border-radius:15px;
-font-size:32px;
-font-weight:bold;
-margin:20px;
+    background:white;
+    color:#ff4d6d;
+    display:inline-block;
+    padding:20px;
+    border-radius:15px;
+    font-size:32px;
+    font-weight:bold;
+    margin:20px;
 }
 
 .gallery{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:15px;
-margin-top:20px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+    margin-top:20px;
 }
 
-/* Wrapper for images that need text directly below them */
+/* Wrapper for every image so text appears directly below it */
 .gallery-item {
-display:flex;
-flex-direction:column;
-align-items:center;
-width:220px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:220px;
 }
 
 .gallery img{
-width:220px;
-height:220px;
-object-fit:cover;
-border-radius:15px;
-cursor:pointer;
-transition:0.3s;
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
+    width:220px;
+    height:220px;
+    object-fit:cover;
+    border-radius:15px;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+    border: 3px solid transparent;
 }
 
 .gallery img:hover{
-transform:scale(1.05);
+    transform:scale(1.05);
 }
 
-/* Highlight effect for clicked images */
-.highlighted {
-transform: scale(1.05);
-box-shadow: 0 0 20px 5px gold !important;
-border: 3px solid gold;
+/* Highlight effect for the currently active clicked image */
+.gallery img.highlighted {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px 5px gold !important;
+    border: 3px solid gold;
 }
 
-/* Hidden text under specific images */
+/* Hidden text under specific images until active */
 .under-image-text {
-display: none;
-margin-top: 10px;
-background: white;
-color: #ff4d6d;
-padding: 10px;
-border-radius: 10px;
-font-size: 16px;
-font-weight: bold;
-box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-#messageBox{
-margin-top:20px;
-background:white;
-color:black;
-display:inline-block;
-padding:15px;
-border-radius:10px;
-font-size:20px;
-max-width:700px;
+    display: none;
+    margin-top: 12px;
+    background: white;
+    color: #ff4d6d;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 100%;
 }
 
 .letter{
-margin-top:30px;
-background:white;
-color:black;
-padding:20px;
-border-radius:15px;
-max-width:800px;
-margin-left:auto;
-margin-right:auto;
-line-height:1.8;
+    margin-top:40px;
+    background:white;
+    color:black;
+    padding:20px;
+    border-radius:15px;
+    max-width:800px;
+    margin-left:auto;
+    margin-right:auto;
+    line-height:1.8;
 }
 
 /* Floating Hearts */
 .heart{
-position:fixed;
-font-size:20px;
-animation:float 6s linear infinite;
-pointer-events:none;
-z-index: 9999;
+    position:fixed;
+    font-size:20px;
+    animation:float 6s linear infinite;
+    pointer-events:none;
+    z-index: 9999;
 }
 
 @keyframes float{
-0%{
-transform:translateY(100vh) scale(1);
-opacity:1;
-}
-100%{
-transform:translateY(-100px) scale(1.5);
-opacity:0;
-}
+    0%{
+        transform:translateY(100vh) scale(1);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-100px) scale(1.5);
+        opacity:0;
+    }
 }
 </style>
 </head>
@@ -177,184 +168,221 @@ opacity:0;
 <body>
 
 <div id="startPage">
-<h1>🎉 A Special Surprise For You 🎉</h1>
-<p>Will you open this birthday surprise? ❤️</p>
-<div class="buttons">
-<button id="yesBtn">YES ❤️</button>
-<button id="noBtn">NO 😅</button>
-</div>
+    <h1>🎉 A Special Surprise For You 🎉</h1>
+    <p>Will you open this birthday surprise? ❤️</p>
+    <div class="buttons">
+        <button id="yesBtn">YES ❤️</button>
+        <button id="noBtn">NO 😅</button>
+    </div>
 </div>
 
 <div id="mainPage">
-<h1>💖 Birthday Countdown 💖</h1>
-<div id="countdown"></div>
-<br>
-<button onclick="playMusic()">▶️ Play Music</button>
-<button onclick="pauseMusic()">⏸ Pause Music</button>
+    <h1>💖 Birthday Countdown 💖</h1>
+    <div id="countdown"></div>
+    <br>
+    <button onclick="playMusic()">▶️ Play Music</button>
+    <button onclick="pauseMusic()">⏸ Pause Music</button>
 
-<audio id="bgMusic">
-<source src="song.mpeg" type="audio/mp3">
-</audio>
+    <audio id="bgMusic">
+        <source src="song.mpeg" type="audio/mp3">
+    </audio>
 
-<h2 style="margin-top:30px;">📸 Beautiful Memories</h2>
+    <h2 style="margin-top:30px;">📸 Beautiful Memories</h2>
 
-<div class="gallery">
+    <div class="gallery">
 
-<div class="gallery-item">
-    <img src="img1.jpeg" id="img1" onclick="triggerImage1()">
-    <div id="msg1" class="under-image-text">You are one of the most special people in my life ❤️</div>
-</div>
+        <div class="gallery-item">
+            <img src="img1.jpeg" class="gallery-img" onclick="handleImageClick(this, 'You are one of the most special people in my life ❤️', 'song3.mpeg')">
+            <div class="under-image-text"></div>
+        </div>
 
-<img src="img2.jpeg" onclick="showMessage('Every memory with you is unforgettable 🌸'); playSong('song2.mpeg')">
-<img src="img3.jpeg" onclick="showMessage('Your smile brightens every day 😊'); playSong('song3.mpeg')">
-<img src="img4.jpeg" onclick="showMessage('Thank you for always supporting me 💕'); playSong('song4.mpeg')">
-<img src="img5.jpeg" onclick="showMessage('You deserve all happiness in the world 🎂'); playSong('song5.mpeg')">
-<img src="img6.jpeg" onclick="showMessage('Only a few more days until your big day 🎉'); playSong('song6.mpeg')">
-<img src="img7.jpeg" onclick="loveMode(); showMessage('Forever my favorite person ❤️'); playSong('song4.mpeg')">
+        <div class="gallery-item">
+            <img src="img2.jpeg" class="gallery-img" onclick="handleImageClick(this, 'Every memory with you is unforgettable 🌸', 'song2.mpeg')">
+            <div class="under-image-text"></div>
+        </div>
 
-</div>
+        <div class="gallery-item">
+            <img src="img3.jpeg" class="gallery-img" onclick="handleImageClick(this, 'Your smile brightens every day 😊', 'song3.mpeg')">
+            <div class="under-image-text"></div>
+        </div>
 
-<div id="messageBox">
-Click any image to reveal a special message ❤️
-</div>
+        <div class="gallery-item">
+            <img src="img4.jpeg" class="gallery-img" onclick="handleImageClick(this, 'Thank you for always supporting me 💕', 'song4.mpeg')">
+            <div class="under-image-text"></div>
+        </div>
 
-<div class="letter">
-<h2>💌 A Letter For You</h2>
-<p>
-Dear Friend,
-<br><br>
-Thank you for being such an amazing person. Happy Birthday in Advance saii💛
-<br><br>
-Our conversations may be few, but the happiness they bring is endless. Thank you for the beautiful memories.
-<br><br>
-I hope this bond lasts forever and that your life is filled with joy, success, and countless smiles.💕💛 💫
-</p>
-</div>
+        <div class="gallery-item">
+            <img src="img5.jpeg" class="gallery-img" onclick="handleImageClick(this, 'You deserve all happiness in the world 🎂', 'song5.mpeg')">
+            <div class="under-image-text"></div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="img6.jpeg" class="gallery-img" onclick="handleImageClick(this, 'Only a few more days until your big day 🎉', 'song6.mpeg')">
+            <div class="under-image-text"></div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="img7.jpeg" class="gallery-img" onclick="handleImageClick(this, 'Forever my favorite person ❤️', 'song4.mpeg', true)">
+            <div class="under-image-text"></div>
+        </div>
+
+    </div>
+
+    <div class="letter">
+        <h2>💌 A Letter For You</h2>
+        <p>
+            Dear Friend,
+            <br><br>
+            Thank you for being such an amazing person. Happy Birthday in Advance saii💛
+            <br><br>
+            Our conversations may be few, but the happiness they bring is endless. Thank you for the beautiful memories.
+            <br><br>
+            I hope this bond lasts forever and that your life is filled with joy, success, and countless smiles.💕💛 💫
+        </p>
+    </div>
 
 </div>
 
 <script>
-
 /* YES BUTTON */
-document.getElementById("yesBtn").onclick=function(){
+document.getElementById("yesBtn").onclick = function(){
     alert("❤️ Welcome To Your Birthday Surprise ❤️");
-    document.getElementById("startPage").style.display="none";
-    document.getElementById("mainPage").style.display="block";
+    document.getElementById("startPage").style.display = "none";
+    document.getElementById("mainPage").style.display = "block";
 }
 
 /* NO BUTTON RUNS AWAY */
-const noBtn=document.getElementById("noBtn");
-noBtn.addEventListener("mouseover",()=>{
-    let x=Math.random()*(window.innerWidth-120);
-    let y=Math.random()*(window.innerHeight-120);
-    noBtn.style.left=x+"px";
-    noBtn.style.top=y+"px";
+const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("mouseover", () => {
+    let x = Math.random() * (window.innerWidth - 120);
+    let y = Math.random() * (window.innerHeight - 120);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
 });
 
 /* COUNTDOWN */
-const birthday=new Date();
-birthday.setDate(birthday.getDate()+100);
+const birthday = new Date();
+birthday.setDate(birthday.getDate() + 100);
 
 function updateCountdown(){
-    const now=new Date();
-    const diff=birthday-now;
+    const now = new Date();
+    const diff = birthday - now;
 
-    if(diff<=0){
-        document.getElementById("countdown").innerHTML= "🎂 HAPPY BIRTHDAY 🎂";
+    if(diff <= 0){
+        document.getElementById("countdown").innerHTML = "🎂 HAPPY BIRTHDAY 🎂";
         return;
     }
 
-    const days=Math.floor(diff/(1000*60*60*24));
-    const hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-    const mins=Math.floor((diff%(1000*60*60))/(1000*60));
-    const secs=Math.floor((diff%(1000*60))/1000);
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
 
-    document.getElementById("countdown").innerHTML=
-    days+" Days "+ hours+" Hours "+ mins+" Minutes "+ secs+" Seconds";
+    document.getElementById("countdown").innerHTML =
+    days + " Days " + hours + " Hours " + mins + " Minutes " + secs + " Seconds";
 }
-
-setInterval(updateCountdown,1000);
+setInterval(updateCountdown, 1000);
 updateCountdown();
 
-/* IMAGE MESSAGE */
-function showMessage(text){
-    document.getElementById("messageBox").innerHTML=text;
-}
+/* GLOBAL MUSIC CONFIGURATION */
+const audio = document.getElementById("bgMusic");
+let loveInterval = null;
 
-/* MUSIC PLAY/PAUSE FOR MAIN BUTTONS */
 function playMusic(){
-    document.getElementById("bgMusic").play();
+    audio.play();
 }
 
 function pauseMusic(){
-    document.getElementById("bgMusic").pause();
+    audio.pause();
 }
 
-/* PLAY SPECIFIC SONG ON IMAGE CLICK */
 function playSong(songUrl) {
-    const audio = document.getElementById("bgMusic");
     audio.src = songUrl; 
     audio.play();        
 }
 
-/* IMAGE 1 SPECIFIC FUNCTION (Highlight & Text Below) */
-function triggerImage1() {
-    // 1. Highlight the image
-    document.getElementById("img1").classList.add("highlighted");
+/* SYSTEM CONTROL TO HANDLE IMAGE HIGHLIGHTS & TEXT BELOW IMAGES */
+function handleImageClick(clickedImg, messageText, songUrl, isLoveMode = false) {
+    // 1. Reset all images and clear text blocks
+    const allImages = document.querySelectorAll('.gallery-img');
+    const allTexts = document.querySelectorAll('.under-image-text');
     
-    // 2. Show the specific message under the image
-    document.getElementById("msg1").style.display = "block";
-    
-    // 3. Clear the main message box so it's not confusing
-    showMessage("❤️");
+    allImages.forEach(img => img.classList.remove('highlighted'));
+    allTexts.forEach(txt => {
+        txt.style.display = 'none';
+        txt.innerHTML = '';
+    });
 
-    // 4. Play the song
-    playSong("song3.mpeg");
-}
+    // 2. Set highlight and text exclusively to the clicked item
+    clickedImg.classList.add('highlighted');
+    const siblingTextBox = clickedImg.nextElementSibling;
+    siblingTextBox.innerHTML = messageText;
+    siblingTextBox.style.display = 'block';
 
-/* LOVE MODE (Intense Hearts & Background for Image 7) */
-let intenseLoveActive = false;
+    // 3. Handle background color change resets
+    if (!isLoveMode) {
+        document.body.style.background = "linear-gradient(135deg,#ff758c,#ff7eb3)";
+        stopLoveMode();
+    }
 
-function loveMode() {
-    // Change background
-    document.body.style.background = "linear-gradient(135deg, #ff0844, #ffb199)";
-    
-    // Start continuous fast hearts moving upwards if not already active
-    if (!intenseLoveActive) {
-        intenseLoveActive = true;
-        
-        setInterval(()=>{
-            let heart=document.createElement("div");
-            heart.innerHTML="💖"; // Using a different heart to make it pop
-            heart.classList.add("heart");
-            
-            // Random horizontal position and size
-            heart.style.left=Math.random()*100+"vw";
-            heart.style.fontSize=(Math.random()*25 + 20) + "px"; 
-            
-            document.body.appendChild(heart);
+    // 4. Trigger audio track sequence
+    playSong(songUrl);
 
-            setTimeout(()=>{
-                heart.remove();
-            }, 6000); // Remove after animation finishes
-            
-        }, 150); // Creates a new heart every 150 milliseconds for a steady stream
+    // 5. Special logic trigger for image 7
+    if (isLoveMode) {
+        startLoveMode();
     }
 }
 
-/* STANDARD SLOW FLOATING HEARTS (Runs in the background always) */
-setInterval(()=>{
-    let heart=document.createElement("div");
-    heart.innerHTML="❤️";
+/* INTENSE LOVE MODE (Image 7 exclusive interaction) */
+function startLoveMode() {
+    // Clear any previous running active interval to prevent overlapping streams
+    stopLoveMode();
+    
+    document.body.style.background = "linear-gradient(135deg, #ff0844, #ffb199)";
+    
+    // Generate streaming hearts upwards continuously
+    loveInterval = setInterval(() => {
+        let heart = document.createElement("div");
+        heart.innerHTML = "💖"; 
+        heart.classList.add("heart");
+        
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 25 + 20) + "px"; 
+        
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }, 150);
+
+    // Event listener setup: Automatically kills heart production system exactly when audio stops playing
+    audio.onended = function() {
+        stopLoveMode();
+        document.body.style.background = "linear-gradient(135deg,#ff758c,#ff7eb3)";
+    };
+}
+
+function stopLoveMode() {
+    if (loveInterval !== null) {
+        clearInterval(loveInterval);
+        loveInterval = null;
+    }
+}
+
+/* STANDARD BACKGROUND FLOATING HEARTS (Always active) */
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.innerHTML = "❤️";
     heart.classList.add("heart");
-    heart.style.left=Math.random()*100+"vw";
+    heart.style.left = Math.random() * 100 + "vw";
     document.body.appendChild(heart);
 
-    setTimeout(()=>{
+    setTimeout(() => {
         heart.remove();
-    },6000);
+    }, 6000);
 }, 800);
-
 </script>
 
 </body>
