@@ -18,6 +18,7 @@ background:linear-gradient(135deg,#ff758c,#ff7eb3);
 text-align:center;
 color:white;
 overflow-x:hidden;
+transition: background 0.5s ease; /* Added smooth transition for background change */
 }
 
 /* Welcome Page */
@@ -146,7 +147,6 @@ opacity:0;
 
 <body>
 
-<!-- FIRST PAGE -->
 <div id="startPage">
 
 <h1>🎉 A Special Surprise For You 🎉</h1>
@@ -160,7 +160,6 @@ opacity:0;
 
 </div>
 
-<!-- MAIN PAGE -->
 <div id="mainPage">
 
 <h1>💖 Birthday Countdown 💖</h1>
@@ -169,7 +168,7 @@ opacity:0;
 
 <br>
 
-<button onclick="playMusic()">▶ Play Music</button>
+<button onclick="playMusic()">▶️ Play Music</button>
 <button onclick="pauseMusic()">⏸ Pause Music</button>
 
 <audio id="bgMusic">
@@ -219,12 +218,13 @@ Dear Friend,
 Thank you for being such an amazing person .
 Happy Birthday in Advance  saii💛
 
-
+<br><br>
 
 Our conversations may be few, but the happiness they bring is endless. Thank you for the beautiful memories.
 
-I hope this bond lasts forever and that your life is filled with joy, success, and countless smiles.💕💛 💫
+<br><br>
 
+I hope this bond lasts forever and that your life is filled with joy, success, and countless smiles.💕💛 💫
 
 </p>
 
@@ -235,110 +235,87 @@ I hope this bond lasts forever and that your life is filled with joy, success, a
 <script>
 
 /* YES BUTTON */
-
 document.getElementById("yesBtn").onclick=function(){
-
-alert("❤️ Welcome To Your Birthday Surprise ❤️");
-
-document.getElementById("startPage").style.display="none";
-
-document.getElementById("mainPage").style.display="block";
-
+    alert("❤️ Welcome To Your Birthday Surprise ❤️");
+    document.getElementById("startPage").style.display="none";
+    document.getElementById("mainPage").style.display="block";
 }
 
 /* NO BUTTON RUNS AWAY */
-
 const noBtn=document.getElementById("noBtn");
-
 noBtn.addEventListener("mouseover",()=>{
-
-let x=Math.random()*(window.innerWidth-120);
-let y=Math.random()*(window.innerHeight-120);
-
-noBtn.style.left=x+"px";
-noBtn.style.top=y+"px";
-
+    let x=Math.random()*(window.innerWidth-120);
+    let y=Math.random()*(window.innerHeight-120);
+    noBtn.style.left=x+"px";
+    noBtn.style.top=y+"px";
 });
 
 /* COUNTDOWN */
-
 const birthday=new Date();
-
 birthday.setDate(birthday.getDate()+100);
 
 function updateCountdown(){
+    const now=new Date();
+    const diff=birthday-now;
 
-const now=new Date();
+    if(diff<=0){
+        document.getElementById("countdown").innerHTML= "🎂 HAPPY BIRTHDAY 🎂";
+        return;
+    }
 
-const diff=birthday-now;
+    const days=Math.floor(diff/(1000*60*60*24));
+    const hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    const mins=Math.floor((diff%(1000*60*60))/(1000*60));
+    const secs=Math.floor((diff%(1000*60))/1000);
 
-if(diff<=0){
-
-document.getElementById("countdown").innerHTML=
-"🎂 HAPPY BIRTHDAY 🎂";
-
-return;
-
-}
-
-const days=Math.floor(diff/(1000*60*60*24));
-const hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-const mins=Math.floor((diff%(1000*60*60))/(1000*60));
-const secs=Math.floor((diff%(1000*60))/1000);
-
-document.getElementById("countdown").innerHTML=
-days+" Days "+
-hours+" Hours "+
-mins+" Minutes "+
-secs+" Seconds";
-
+    document.getElementById("countdown").innerHTML=
+    days+" Days "+ hours+" Hours "+ mins+" Minutes "+ secs+" Seconds";
 }
 
 setInterval(updateCountdown,1000);
-
 updateCountdown();
 
 /* IMAGE MESSAGE */
-
 function showMessage(text){
-
-document.getElementById("messageBox").innerHTML=text;
-
+    document.getElementById("messageBox").innerHTML=text;
 }
 
-/* MUSIC */
-
+/* MUSIC PLAY/PAUSE FOR MAIN BUTTONS */
 function playMusic(){
-
-document.getElementById("bgMusic").play();
-
+    document.getElementById("bgMusic").play();
 }
 
 function pauseMusic(){
-
-document.getElementById("bgMusic").pause();
-
+    document.getElementById("bgMusic").pause();
 }
 
+/* --- THE FIXES ARE BELOW --- */
+
+/* PLAY SPECIFIC SONG ON IMAGE CLICK */
+function playSong(songUrl) {
+    const audio = document.getElementById("bgMusic");
+    audio.src = songUrl; 
+    audio.play();        
+}
+
+/* LOVE MODE (Changes background for Image 7) */
+function loveMode() {
+    document.body.style.background = "linear-gradient(135deg, #ff0844, #ffb199)";
+}
+
+/* --------------------------- */
+
 /* FLOATING HEARTS */
-
 setInterval(()=>{
+    let heart=document.createElement("div");
+    heart.innerHTML="❤️";
+    heart.classList.add("heart");
+    heart.style.left=Math.random()*100+"vw";
+    document.body.appendChild(heart);
 
-let heart=document.createElement("div");
-
-heart.innerHTML="❤️";
-
-heart.classList.add("heart");
-
-heart.style.left=Math.random()*100+"vw";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>{
-
-heart.remove();
-
-},6000);
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
 
 },500);
 
