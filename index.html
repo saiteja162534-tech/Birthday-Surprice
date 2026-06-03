@@ -18,7 +18,7 @@ background:linear-gradient(135deg,#ff758c,#ff7eb3);
 text-align:center;
 color:white;
 overflow-x:hidden;
-transition: background 0.5s ease; /* Added smooth transition for background change */
+transition: background 0.5s ease;
 }
 
 /* Welcome Page */
@@ -87,6 +87,14 @@ gap:15px;
 margin-top:20px;
 }
 
+/* Wrapper for images that need text directly below them */
+.gallery-item {
+display:flex;
+flex-direction:column;
+align-items:center;
+width:220px;
+}
+
 .gallery img{
 width:220px;
 height:220px;
@@ -99,6 +107,26 @@ box-shadow:0 5px 15px rgba(0,0,0,0.3);
 
 .gallery img:hover{
 transform:scale(1.05);
+}
+
+/* Highlight effect for clicked images */
+.highlighted {
+transform: scale(1.05);
+box-shadow: 0 0 20px 5px gold !important;
+border: 3px solid gold;
+}
+
+/* Hidden text under specific images */
+.under-image-text {
+display: none;
+margin-top: 10px;
+background: white;
+color: #ff4d6d;
+padding: 10px;
+border-radius: 10px;
+font-size: 16px;
+font-weight: bold;
+box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 #messageBox{
@@ -130,15 +158,16 @@ position:fixed;
 font-size:20px;
 animation:float 6s linear infinite;
 pointer-events:none;
+z-index: 9999;
 }
 
 @keyframes float{
 0%{
-transform:translateY(100vh);
+transform:translateY(100vh) scale(1);
 opacity:1;
 }
 100%{
-transform:translateY(-100px);
+transform:translateY(-100px) scale(1.5);
 opacity:0;
 }
 }
@@ -148,26 +177,18 @@ opacity:0;
 <body>
 
 <div id="startPage">
-
 <h1>🎉 A Special Surprise For You 🎉</h1>
-
 <p>Will you open this birthday surprise? ❤️</p>
-
 <div class="buttons">
 <button id="yesBtn">YES ❤️</button>
 <button id="noBtn">NO 😅</button>
 </div>
-
 </div>
 
 <div id="mainPage">
-
 <h1>💖 Birthday Countdown 💖</h1>
-
 <div id="countdown"></div>
-
 <br>
-
 <button onclick="playMusic()">▶️ Play Music</button>
 <button onclick="pauseMusic()">⏸ Pause Music</button>
 
@@ -179,26 +200,17 @@ opacity:0;
 
 <div class="gallery">
 
-<img src="img1.jpeg"
-onclick="showMessage('You are one of the most special people in my life ❤️'); playSong('song3.mpeg')">
+<div class="gallery-item">
+    <img src="img1.jpeg" id="img1" onclick="triggerImage1()">
+    <div id="msg1" class="under-image-text">You are one of the most special people in my life ❤️</div>
+</div>
 
-<img src="img2.jpeg"
-onclick="showMessage('Every memory with you is unforgettable 🌸'); playSong('song2.mpeg')">
-
-<img src="img3.jpeg"
-onclick="showMessage('Your smile brightens every day 😊'); playSong('song3.mpeg')">
-
-<img src="img4.jpeg"
-onclick="showMessage('Thank you for always supporting me 💕'); playSong('song4.mpeg')">
-
-<img src="img5.jpeg"
-onclick="showMessage('You deserve all happiness in the world 🎂'); playSong('song5.mpeg')">
-
-<img src="img6.jpeg"
-onclick="showMessage('Only a few more days until your big day 🎉'); playSong('song6.mpeg')">
-
-<img src="img7.jpeg"
-onclick="loveMode(); showMessage('Forever my favorite person ❤️'); playSong('song4.mpeg')">
+<img src="img2.jpeg" onclick="showMessage('Every memory with you is unforgettable 🌸'); playSong('song2.mpeg')">
+<img src="img3.jpeg" onclick="showMessage('Your smile brightens every day 😊'); playSong('song3.mpeg')">
+<img src="img4.jpeg" onclick="showMessage('Thank you for always supporting me 💕'); playSong('song4.mpeg')">
+<img src="img5.jpeg" onclick="showMessage('You deserve all happiness in the world 🎂'); playSong('song5.mpeg')">
+<img src="img6.jpeg" onclick="showMessage('Only a few more days until your big day 🎉'); playSong('song6.mpeg')">
+<img src="img7.jpeg" onclick="loveMode(); showMessage('Forever my favorite person ❤️'); playSong('song4.mpeg')">
 
 </div>
 
@@ -207,27 +219,16 @@ Click any image to reveal a special message ❤️
 </div>
 
 <div class="letter">
-
 <h2>💌 A Letter For You</h2>
-
 <p>
 Dear Friend,
-
 <br><br>
-
-Thank you for being such an amazing person .
-Happy Birthday in Advance  saii💛
-
+Thank you for being such an amazing person. Happy Birthday in Advance saii💛
 <br><br>
-
 Our conversations may be few, but the happiness they bring is endless. Thank you for the beautiful memories.
-
 <br><br>
-
 I hope this bond lasts forever and that your life is filled with joy, success, and countless smiles.💕💛 💫
-
 </p>
-
 </div>
 
 </div>
@@ -289,8 +290,6 @@ function pauseMusic(){
     document.getElementById("bgMusic").pause();
 }
 
-/* --- THE FIXES ARE BELOW --- */
-
 /* PLAY SPECIFIC SONG ON IMAGE CLICK */
 function playSong(songUrl) {
     const audio = document.getElementById("bgMusic");
@@ -298,14 +297,52 @@ function playSong(songUrl) {
     audio.play();        
 }
 
-/* LOVE MODE (Changes background for Image 7) */
-function loveMode() {
-    document.body.style.background = "linear-gradient(135deg, #ff0844, #ffb199)";
+/* IMAGE 1 SPECIFIC FUNCTION (Highlight & Text Below) */
+function triggerImage1() {
+    // 1. Highlight the image
+    document.getElementById("img1").classList.add("highlighted");
+    
+    // 2. Show the specific message under the image
+    document.getElementById("msg1").style.display = "block";
+    
+    // 3. Clear the main message box so it's not confusing
+    showMessage("❤️");
+
+    // 4. Play the song
+    playSong("song3.mpeg");
 }
 
-/* --------------------------- */
+/* LOVE MODE (Intense Hearts & Background for Image 7) */
+let intenseLoveActive = false;
 
-/* FLOATING HEARTS */
+function loveMode() {
+    // Change background
+    document.body.style.background = "linear-gradient(135deg, #ff0844, #ffb199)";
+    
+    // Start continuous fast hearts moving upwards if not already active
+    if (!intenseLoveActive) {
+        intenseLoveActive = true;
+        
+        setInterval(()=>{
+            let heart=document.createElement("div");
+            heart.innerHTML="💖"; // Using a different heart to make it pop
+            heart.classList.add("heart");
+            
+            // Random horizontal position and size
+            heart.style.left=Math.random()*100+"vw";
+            heart.style.fontSize=(Math.random()*25 + 20) + "px"; 
+            
+            document.body.appendChild(heart);
+
+            setTimeout(()=>{
+                heart.remove();
+            }, 6000); // Remove after animation finishes
+            
+        }, 150); // Creates a new heart every 150 milliseconds for a steady stream
+    }
+}
+
+/* STANDARD SLOW FLOATING HEARTS (Runs in the background always) */
 setInterval(()=>{
     let heart=document.createElement("div");
     heart.innerHTML="❤️";
@@ -316,8 +353,7 @@ setInterval(()=>{
     setTimeout(()=>{
         heart.remove();
     },6000);
-
-},500);
+}, 800);
 
 </script>
 
