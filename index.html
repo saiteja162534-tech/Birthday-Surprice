@@ -101,20 +101,20 @@ button{
     object-fit:cover;
     border-radius:15px;
     cursor:pointer;
-    transition:0.3s;
+    transition: 0.3s ease;
     box-shadow:0 5px 15px rgba(0,0,0,0.3);
-    border: 3px solid transparent;
+    border: 4px solid transparent; /* Keeps sizing stable */
 }
 
 .gallery img:hover{
     transform:scale(1.05);
 }
 
-/* Highlight effect for the currently active clicked image */
+/* FORCE HIGHLIGHT VIA !IMPORTANT TO OVERRIDE ALL STYLES */
 .gallery img.highlighted {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px 5px gold !important;
-    border: 3px solid gold;
+    transform: scale(1.05) !important;
+    box-shadow: 0 0 25px 8px gold !important;
+    border: 4px solid gold !important;
 }
 
 /* Hidden text under specific images until active */
@@ -129,6 +129,7 @@ button{
     font-weight: bold;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     width: 100%;
+    z-index: 10;
 }
 
 .letter{
@@ -143,23 +144,24 @@ button{
     line-height:1.8;
 }
 
-/* Floating Hearts */
+/* Floating Hearts Engine */
 .heart{
-    position:fixed;
-    font-size:20px;
-    animation:float 6s linear infinite;
-    pointer-events:none;
+    position: fixed;
+    bottom: -50px; /* Start completely off-screen at the bottom */
+    font-size: 24px;
+    animation: floatUp 5s linear forwards;
+    pointer-events: none;
     z-index: 9999;
 }
 
-@keyframes float{
-    0%{
-        transform:translateY(100vh) scale(1);
-        opacity:1;
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 1;
     }
-    100%{
-        transform:translateY(-100px) scale(1.5);
-        opacity:0;
+    100% {
+        transform: translateY(-110vh) scale(1.5); /* Clear past the top edge */
+        opacity: 0;
     }
 }
 </style>
@@ -192,32 +194,32 @@ button{
     <div class="gallery">
 
         <div class="gallery-item">
-            <img src="img1.jpeg" class="gallery-img" onclick="handleImageClick(this, 'You are one of the most special people in my life ❤️', 'song3.mpeg')">
+            <img src="img1.jpeg" class="gallery-img" onclick="handleImageClick(this, 'You are one of the most special people in my life ❤️', 'song3.mpeg', false)">
             <div class="under-image-text"></div>
         </div>
 
         <div class="gallery-item">
-            <img src="img2.jpeg" class="gallery-img" onclick="handleImageClick(this, 'Every memory with you is unforgettable 🌸', 'song2.mpeg')">
+            <img src="img2.jpeg" class="gallery-img" onclick="handleImageClick(this, 'Every memory with you is unforgettable 🌸', 'song2.mpeg', false)">
             <div class="under-image-text"></div>
         </div>
 
         <div class="gallery-item">
-            <img src="img3.jpeg" class="gallery-img" onclick="handleImageClick(this, 'Your smile brightens every day 😊', 'song3.mpeg')">
+            <img src="img3.jpeg" class="gallery-img" onclick="handleImageClick(this, 'Your smile brightens every day 😊', 'song3.mpeg', false)">
             <div class="under-image-text"></div>
         </div>
 
         <div class="gallery-item">
-            <img src="img4.jpeg" class="gallery-img" onclick="handleImageClick(this, 'Thank you for always supporting me 💕', 'song4.mpeg')">
+            <img src="img4.jpeg" class="gallery-img" onclick="handleImageClick(this, 'Thank you for always supporting me 💕', 'song4.mpeg', false)">
             <div class="under-image-text"></div>
         </div>
 
         <div class="gallery-item">
-            <img src="img5.jpeg" class="gallery-img" onclick="handleImageClick(this, 'You deserve all happiness in the world 🎂', 'song5.mpeg')">
+            <img src="img5.jpeg" class="gallery-img" onclick="handleImageClick(this, 'You deserve all happiness in the world 🎂', 'song5.mpeg', false)">
             <div class="under-image-text"></div>
         </div>
 
         <div class="gallery-item">
-            <img src="img6.jpeg" class="gallery-img" onclick="handleImageClick(this, 'Only a few more days until your big day 🎉', 'song6.mpeg')">
+            <img src="img6.jpeg" class="gallery-img" onclick="handleImageClick(this, 'Only a few more days until your big day 🎉', 'song6.mpeg', false)">
             <div class="under-image-text"></div>
         </div>
 
@@ -298,66 +300,68 @@ function pauseMusic(){
 
 function playSong(songUrl) {
     audio.src = songUrl; 
+    audio.load();
     audio.play();        
 }
 
-/* SYSTEM CONTROL TO HANDLE IMAGE HIGHLIGHTS & TEXT BELOW IMAGES */
-function handleImageClick(clickedImg, messageText, songUrl, isLoveMode = false) {
-    // 1. Reset all images and clear text blocks
+/* MASTER CONTROLLER FOR HIGHLIGHTS & LOCALIZED TEXT CONTAINER */
+function handleImageClick(clickedImg, messageText, songUrl, isLoveMode) {
+    // 1. Instantly clear highlights from all images
     const allImages = document.querySelectorAll('.gallery-img');
+    allImages.forEach(img => {
+        img.classList.remove('highlighted');
+    });
+
+    // 2. Clear out and hide all text boxes
     const allTexts = document.querySelectorAll('.under-image-text');
-    
-    allImages.forEach(img => img.classList.remove('highlighted'));
     allTexts.forEach(txt => {
         txt.style.display = 'none';
         txt.innerHTML = '';
     });
 
-    // 2. Set highlight and text exclusively to the clicked item
+    // 3. Highlight the clicked image and reveal its specific text container
     clickedImg.classList.add('highlighted');
     const siblingTextBox = clickedImg.nextElementSibling;
     siblingTextBox.innerHTML = messageText;
     siblingTextBox.style.display = 'block';
 
-    // 3. Handle background color change resets
-    if (!isLoveMode) {
-        document.body.style.background = "linear-gradient(135deg,#ff758c,#ff7eb3)";
-        stopLoveMode();
-    }
-
-    // 4. Trigger audio track sequence
-    playSong(songUrl);
-
-    // 5. Special logic trigger for image 7
-    if (isLoveMode) {
+    // 4. Handle state configurations for Love Mode
+    if (isLoveMode === true) {
         startLoveMode();
+    } else {
+        stopLoveMode();
+        document.body.style.background = "linear-gradient(135deg,#ff758c,#ff7eb3)";
     }
+
+    // 5. Play corresponding audio
+    playSong(songUrl);
 }
 
-/* INTENSE LOVE MODE (Image 7 exclusive interaction) */
+/* INTENSE LOVE MODE SYSTEM (Image 7 upward continuous stream) */
 function startLoveMode() {
-    // Clear any previous running active interval to prevent overlapping streams
-    stopLoveMode();
+    stopLoveMode(); // Reset system loops if active
     
     document.body.style.background = "linear-gradient(135deg, #ff0844, #ffb199)";
     
-    // Generate streaming hearts upwards continuously
+    // Spawns up-moving symbols every 120ms rapidly
     loveInterval = setInterval(() => {
         let heart = document.createElement("div");
-        heart.innerHTML = "💖"; 
+        heart.innerHTML = "❤️💛"; 
         heart.classList.add("heart");
         
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = (Math.random() * 25 + 20) + "px"; 
+        // Randomize spawn paths horizontally across viewport width
+        heart.style.left = Math.random() * 95 + "vw";
+        heart.style.fontSize = (Math.random() * 20 + 20) + "px"; 
         
         document.body.appendChild(heart);
 
+        // Remove element directly out of the DOM after animation cycle concludes
         setTimeout(() => {
             heart.remove();
-        }, 6000);
-    }, 150);
+        }, 5000);
+    }, 120);
 
-    // Event listener setup: Automatically kills heart production system exactly when audio stops playing
+    // Event Hook: Turns off heart loop execution dynamically when song concludes
     audio.onended = function() {
         stopLoveMode();
         document.body.style.background = "linear-gradient(135deg,#ff758c,#ff7eb3)";
@@ -371,17 +375,20 @@ function stopLoveMode() {
     }
 }
 
-/* STANDARD BACKGROUND FLOATING HEARTS (Always active) */
+/* STANDARD STEADY BACKGROUND HEARTS */
 setInterval(() => {
-    let heart = document.createElement("div");
-    heart.innerHTML = "❤️";
-    heart.classList.add("heart");
-    heart.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(heart);
+    // Only launch background ambient hearts if Image 7's love mode isn't occupying execution space
+    if (loveInterval === null) {
+        let heart = document.createElement("div");
+        heart.innerHTML = "❤️💛";
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 95 + "vw";
+        document.body.appendChild(heart);
 
-    setTimeout(() => {
-        heart.remove();
-    }, 6000);
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }
 }, 800);
 </script>
 
