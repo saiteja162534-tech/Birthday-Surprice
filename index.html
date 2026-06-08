@@ -393,6 +393,22 @@ onclick="handleImageClick(this,'❤️ Forever My Favorite Person ❤️','song7
 
 </div>
 
+<div id="lockedLetter" class="letter">
+
+<h2>🔒 Secret Birthday Letter 🔒</h2>
+
+<p>
+This special letter is locked.
+
+🎁 It will automatically open on
+
+<strong>10 September 2026</strong>
+
+🎂 Happy Birthday Surprise Waiting...
+</p>
+
+</div>
+
 <div class="letter" id="birthdayLetter" style="display:none;">
 
 <h2>💌 A Letter For You</h2>
@@ -471,6 +487,7 @@ document.getElementById("countdown").innerHTML=
 
 document.getElementById("birthdayMessage").style.display="block";
 document.getElementById("birthdayLetter").style.display="block";
+document.getElementById("lockedLetter").style.display="none";
 
 return;
 
@@ -478,6 +495,7 @@ return;
 
 document.getElementById("birthdayMessage").style.display="none";
 document.getElementById("birthdayLetter").style.display="none";
+document.getElementById("lockedLetter").style.display="block";
 
 const birthday=new Date("September 10, 2026 00:00:00");
 
