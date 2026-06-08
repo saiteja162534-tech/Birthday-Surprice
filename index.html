@@ -9,8 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&family=Lobster&family=Great+Vibes&family=Satisfy&display=swap" rel="stylesheet">
 
 <style>
-
-*{
+    *{
 margin:0;
 padding:0;
 box-sizing:border-box;
@@ -85,7 +84,7 @@ font-weight:bold;
 margin:20px;
 }
 
-/* BIRTHDAY SPECIAL CARD */
+/* BIRTHDAY MESSAGE */
 
 #birthdayMessage{
 display:none;
@@ -107,29 +106,18 @@ max-width:850px;
 margin:30px auto;
 padding:40px;
 border-radius:25px;
-
-background:
-linear-gradient(
-135deg,
-#fff8dc,
-#ffd700,
-#fff8dc
-);
-
+background:linear-gradient(135deg,#fff8dc,#ffd700,#fff8dc);
 color:#7a4f01;
-
 font-family:'Great Vibes',cursive;
 font-size:36px;
-
 line-height:1.8;
-
 box-shadow:
 0 0 20px gold,
 0 0 40px gold,
 0 0 80px gold;
 }
 
-/* BACK BUTTON */
+/* BUTTON */
 
 #backBtn{
 display:none;
@@ -191,8 +179,6 @@ width:100%;
 animation:fadeIn 1s ease;
 }
 
-/* FONT THEMES */
-
 .gold-font{
 background:#fff8dc;
 color:#b8860b;
@@ -236,11 +222,7 @@ font-size:28px;
 }
 
 .love-font{
-background:linear-gradient(
-135deg,
-#ff0844,
-#ffb199
-);
+background:linear-gradient(135deg,#ff0844,#ffb199);
 color:white;
 font-family:'Great Vibes',cursive;
 font-size:35px;
@@ -250,11 +232,7 @@ font-size:35px;
 
 .letter{
 margin-top:40px;
-background:linear-gradient(
-135deg,
-#fff8dc,
-#ffd700
-);
+background:linear-gradient(135deg,#fff8dc,#ffd700);
 color:#8b6508;
 padding:30px;
 border-radius:20px;
@@ -298,364 +276,244 @@ opacity:1;
 transform:translateY(0);
 }
 }
-
-</style>
+    </style>
 </head>
 
 <body>
-    <div id="startPage">
-    <h1>🎉 A Special Surprise For You 🎉</h1>
-    <p>Will you open this birthday surprise? ❤️</p>
 
-    <div class="buttons">
-        <button id="yesBtn">YES ❤️</button>
-        <button id="noBtn">NO 😅</button>
-    </div>
+<div id="startPage">
+
+<h1>🎉 A Special Surprise For You 🎉</h1>
+
+<p>Will you open this birthday surprise? ❤️</p>
+
+<div class="buttons">
+<button id="yesBtn">YES ❤️</button>
+<button id="noBtn">NO 😅</button>
+</div>
+
 </div>
 
 <div id="mainPage">
 
-    <h1>💖 Birthday Countdown 💖</h1>
+<h1>💖 Birthday Countdown 💖</h1>
 
-    <div id="countdown"></div>
+<div id="countdown"></div>
 
-    <div id="birthdayMessage">
+<div id="birthdayMessage">
 
-        <h1 class="birthday-title">
-            🎂 Happy Birthday Saiii ❤️ 🎂
-        </h1>
+<h1 class="birthday-title">
+🎂 Happy Birthday Saiii ❤️ 🎂
+</h1>
 
-        <div class="birthday-special-card">
+<div class="birthday-special-card">
 
-            ✨ Today is finally your special day ✨
+✨ Today is finally your special day ✨
 
-            <br><br>
+<br><br>
 
-            May your smile shine brighter than the stars.
+May your smile shine brighter than the stars.
 
-            <br><br>
+<br><br>
 
-            May happiness follow you everywhere.
+May happiness follow you everywhere.
 
-            <br><br>
+<br><br>
 
-            May all your dreams come true.
+May all your dreams come true.
 
-            <br><br>
+<br><br>
 
-            💖 Happy Birthday Once Again 💖
-
-        </div>
-
-    </div>
-
-    <br>
-
-    <button onclick="playMusic()">▶️ Play Music</button>
-
-    <button onclick="pauseMusic()">⏸ Pause Music</button>
-
-    <button id="backBtn" onclick="showAllImages()">
-        ⬅ Back To Gallery
-    </button>
-
-    <audio id="bgMusic">
-        <source src="song.mpeg" type="audio/mp3">
-    </audio>
-
-    <h2 style="margin-top:30px;">
-        📸 Beautiful Memories
-    </h2>
-
-    <div class="gallery">
-
-        <div class="gallery-item">
-
-            <img src="img1.jpeg"
-            class="gallery-img"
-            onclick="handleImageClick(
-            this,
-            '✨ No matter how old you grow, you will always be your father's little girl.
-
-His love has been your strength, his smile your encouragement, and his blessings your greatest gift.❤️ ✨',
-            'song1.mpeg',
-            false,
-            'gold-font'
-            )">
-
-            <div class="under-image-text"></div>
-
-        </div>
-
-        <div class="gallery-item">
-
-            <img src="img2.jpeg"
-            class="gallery-img"
-            onclick="handleImageClick(
-            this,
-            '🌹Some people enter our lives as friends and stay forever as family.
-
-The laughter, secrets, and memories you share are treasures that time can never replace🌹',
-            'song2.mpeg',
-            false,
-            'romantic-font'
-            )">
-
-            <div class="under-image-text"></div>
-
-        </div>
-
-        <div class="gallery-item">
-
-            <img src="img3.jpeg"
-            class="gallery-img"
-            onclick="handleImageClick(
-            this,
-            '😊 Your smile brightens every day Your smile is proof that happiness can be contagious.😊',
-            'song3.mpeg',
-            false,
-            'cute-font'
-            )">
-
-            <div class="under-image-text"></div>
-
-        </div>
-
-        <div class="gallery-item">
-
-            <img src="img4.jpeg"
-            class="gallery-img"
-            onclick="handleImageClick(
-            this,
-            '💕 youu don't need to be perfect to be amazing.
-
-Just being yourself is enough to make a difference in so many lives.
-
-Keep shining, because the world becomes a little brighter when you do.💕',
-            'song4.mpeg',
-            false,
-            'elegant-font'
-            )">
-
-            <div class="under-image-text"></div>
-
-        </div>
-
-        <div class="gallery-item">
-
-            <img src="img5.jpeg"
-            class="gallery-img"
-            onclick="handleImageClick(
-            this,
-            '👑 A beautiful smile can brighten a day, but yours brightens hearts.
-
-The sparkle in your eyes reflects the kindness and happiness you carry within. 👑',
-            'song5.mpeg',
-            false,
-            'princess-font'
-            )">
-
-            <div class="under-image-text"></div>
-
-        </div>
-
-        <div class="gallery-item">
-
-            <img src="img6.jpeg"
-            class="gallery-img"
-            onclick="handleImageClick(
-            this,
-            '🎂 Your eyes tell stories that words cannot express, and your smile brings joy wherever it goes.
-
-In this traditional look, your beauty shines even more beautifully. 🎂',
-            'song6.mpeg',
-            false,
-            'sweet-font'
-            )">
-
-            <div class="under-image-text"></div>
-
-        </div>
-
-        <div class="gallery-item">
-
-            <img src="img7.jpeg"
-            class="gallery-img"
-            onclick="handleImageClick(
-            this,
-            '❤️ Forever My Favorite Person Every memory with you is special and unforgettable.
-
-Thank you for being such an amazing part of my life. ❤️',
-            'song7.mpeg',
-            true,
-            'love-font'
-            )">
-
-            <div class="under-image-text"></div>
-
-        </div>
-
-    </div>
-
-    <div class="letter">
-
-        <h2>💌 A Letter For You</h2>
-
-        <p>
-
-            Dear Sai,
-
-            <br><br>
-
-            Thank you for being such an amazing person.
-
-            Happy Birthday in Advance 💛
-
-            <br><br>
-
-            Every memory with you is special.
-
-            Your smile, your kindness and your presence
-            make life more beautiful.
-
-            <br><br>
-
-            I hope all your dreams come true
-            and your life is filled with happiness,
-            success and endless smiles.
-
-            <br><br>
-
-            💕 Happy Birthday 💕
-            💫 Stay Blessed Always 💫
-
-        </p>
-
-    </div>
+💖 Happy Birthday Once Again 💖
 
 </div>
-    <script>
 
-/* YES BUTTON */
-document.getElementById("yesBtn").onclick = function(){
+</div>
 
-    alert("❤️ Welcome To Your Birthday Surprise ❤️");
+<br>
 
-    document.getElementById("startPage").style.display =
-    "none";
+<button onclick="playMusic()">▶️ Play Music</button>
+<button onclick="pauseMusic()">⏸ Pause Music</button>
 
-    document.getElementById("mainPage").style.display =
-    "block";
+<button id="backBtn" onclick="showAllImages()">
+⬅ Back To Gallery
+</button>
+
+<audio id="bgMusic">
+<source src="song.mpeg" type="audio/mpeg">
+</audio>
+
+<h2 style="margin-top:30px;">
+📸 Beautiful Memories
+</h2>
+
+<div class="gallery">
+
+<div class="gallery-item">
+<img src="img1.jpeg" class="gallery-img"
+onclick="handleImageClick(this,'✨ No matter how old you grow, you will always be your father little girl. ❤️','song1.mpeg',false,'gold-font')">
+<div class="under-image-text"></div>
+</div>
+
+<div class="gallery-item">
+<img src="img2.jpeg" class="gallery-img"
+onclick="handleImageClick(this,'🌹 Some people enter our lives as friends and stay forever as family. 🌹','song2.mpeg',false,'romantic-font')">
+<div class="under-image-text"></div>
+</div>
+
+<div class="gallery-item">
+<img src="img3.jpeg" class="gallery-img"
+onclick="handleImageClick(this,'😊 Your smile brightens every day. 😊','song3.mpeg',false,'cute-font')">
+<div class="under-image-text"></div>
+</div>
+
+<div class="gallery-item">
+<img src="img4.jpeg" class="gallery-img"
+onclick="handleImageClick(this,'💕 You do not need to be perfect to be amazing. 💕','song4.mpeg',false,'elegant-font')">
+<div class="under-image-text"></div>
+</div>
+
+<div class="gallery-item">
+<img src="img5.jpeg" class="gallery-img"
+onclick="handleImageClick(this,'👑 A beautiful smile can brighten a day, but yours brightens hearts. 👑','song5.mpeg',false,'princess-font')">
+<div class="under-image-text"></div>
+</div>
+
+<div class="gallery-item">
+<img src="img6.jpeg" class="gallery-img"
+onclick="handleImageClick(this,'🎂 Your eyes tell stories that words cannot express. 🎂','song6.mpeg',false,'sweet-font')">
+<div class="under-image-text"></div>
+</div>
+
+<div class="gallery-item">
+<img src="img7.jpeg" class="gallery-img"
+onclick="handleImageClick(this,'❤️ Forever My Favorite Person ❤️','song7.mpeg',true,'love-font')">
+<div class="under-image-text"></div>
+</div>
+
+</div>
+
+<div class="letter">
+
+<h2>💌 A Letter For You</h2>
+
+<p>
+
+Dear Sai,
+
+<br><br>
+
+Thank you for being such an amazing person.
+
+<br><br>
+
+Every memory with you is special.
+
+<br><br>
+
+I hope all your dreams come true and your life is filled with happiness, success and endless smiles.
+
+<br><br>
+
+💕 Happy Birthday 💕
+<br>
+💫 Stay Blessed Always 💫
+
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+const audio=document.getElementById("bgMusic");
+
+document.getElementById("yesBtn").onclick=function(){
+
+alert("❤️ Welcome To Your Birthday Surprise ❤️");
+
+document.getElementById("startPage").style.display="none";
+document.getElementById("mainPage").style.display="block";
+
+audio.play().catch(()=>{});
+
 };
 
-/* NO BUTTON RUNS AWAY */
-
-const noBtn = document.getElementById("noBtn");
+const noBtn=document.getElementById("noBtn");
 
 noBtn.addEventListener("mouseover",()=>{
 
-    let x =
-    Math.random()*(window.innerWidth-120);
+let x=Math.random()*(window.innerWidth-120);
+let y=Math.random()*(window.innerHeight-120);
 
-    let y =
-    Math.random()*(window.innerHeight-120);
-
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
 
 });
 
-/* BIRTHDAY DATE */
-
-const birthday =
-new Date("September 10, 2026 00:00:00");
-
-/* COUNTDOWN */
-
 function updateCountdown(){
 
-    const now = new Date();
+const now=new Date();
 
-    const diff =
-    birthday - now;
+if(
+now.getFullYear()===2026 &&
+now.getMonth()===8 &&
+now.getDate()===10
+){
 
-    if(diff <= 0){
+document.getElementById("countdown").innerHTML=
+"🎂 HAPPY BIRTHDAY 🎂";
 
-        document.getElementById("countdown")
-        .innerHTML =
-        "🎂 HAPPY BIRTHDAY 🎂";
+document.getElementById("birthdayMessage").style.display="block";
 
-        document.getElementById(
-        "birthdayMessage"
-        ).style.display = "block";
+return;
 
-        return;
-    }
+}
 
-    const days =
-    Math.floor(diff/(1000*60*60*24));
+document.getElementById("birthdayMessage").style.display="none";
 
-    const hours =
-    Math.floor(
-    (diff%(1000*60*60*24))
-    /(1000*60*60)
-    );
+const birthday=new Date("September 10, 2026 00:00:00");
 
-    const mins =
-    Math.floor(
-    (diff%(1000*60*60))
-    /(1000*60)
-    );
+const diff=birthday-now;
 
-    const secs =
-    Math.floor(
-    (diff%(1000*60))
-    /1000
-    );
+const days=Math.floor(diff/(1000*60*60*24));
+const hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+const mins=Math.floor((diff%(1000*60*60))/(1000*60));
+const secs=Math.floor((diff%(1000*60))/1000);
 
-    document.getElementById(
-    "countdown"
-    ).innerHTML =
+document.getElementById("countdown").innerHTML=
+days+" Days "+
+hours+" Hours "+
+mins+" Minutes "+
+secs+" Seconds";
 
-    days + " Days " +
-    hours + " Hours " +
-    mins + " Minutes " +
-    secs + " Seconds";
 }
 
 setInterval(updateCountdown,1000);
-
 updateCountdown();
 
-/* AUDIO */
-
-const audio =
-document.getElementById("bgMusic");
-
-let loveInterval = null;
-
 function playMusic(){
-
-    audio.play();
-
+audio.play().catch(()=>{});
 }
 
 function pauseMusic(){
-
-    audio.pause();
-
+audio.pause();
 }
 
 function playSong(songUrl){
 
-    audio.src = songUrl;
+audio.pause();
 
-    audio.load();
+audio.src=songUrl;
 
-    audio.play();
+audio.load();
+
+audio.play().catch(()=>{});
+
 }
 
-/* SHOW ONLY CLICKED IMAGE */
+let loveInterval=null;
 
 function handleImageClick(
 clickedImg,
@@ -665,196 +523,103 @@ isLoveMode,
 fontClass
 ){
 
-    document
-    .querySelectorAll(".gallery-item")
-    .forEach(item=>{
+document.querySelectorAll(".gallery-item").forEach(item=>{
+item.style.display="none";
+});
 
-        item.style.display="none";
+clickedImg.parentElement.style.display="flex";
 
-    });
+document.getElementById("backBtn").style.display="inline-block";
 
-    clickedImg.parentElement
-    .style.display="flex";
+const textBox=clickedImg.nextElementSibling;
 
-    document.getElementById(
-    "backBtn"
-    ).style.display="inline-block";
+textBox.className="under-image-text "+fontClass;
 
-    document
-    .querySelectorAll(".gallery-img")
-    .forEach(img=>{
+textBox.innerHTML=messageText;
 
-        img.classList.remove(
-        "highlighted"
-        );
+textBox.style.display="block";
 
-    });
+playSong(songUrl);
 
-    clickedImg.classList.add(
-    "highlighted"
-    );
-
-    const textBox =
-    clickedImg.nextElementSibling;
-
-    textBox.className =
-    "under-image-text " +
-    fontClass;
-
-    textBox.innerHTML =
-    messageText;
-
-    textBox.style.display =
-    "block";
-
-    playSong(songUrl);
-
-    if(isLoveMode){
-
-        startLoveMode();
-
-    }else{
-
-        stopLoveMode();
-
-        document.body.style.background =
-        "linear-gradient(135deg,#ff758c,#ff7eb3)";
-    }
+if(isLoveMode){
+startLoveMode();
+}else{
+stopLoveMode();
 }
 
-/* BACK TO GALLERY */
+}
 
 function showAllImages(){
 
-    document
-    .querySelectorAll(".gallery-item")
-    .forEach(item=>{
+document.querySelectorAll(".gallery-item").forEach(item=>{
+item.style.display="flex";
+});
 
-        item.style.display="flex";
+document.querySelectorAll(".under-image-text").forEach(txt=>{
+txt.style.display="none";
+});
 
-    });
+document.getElementById("backBtn").style.display="none";
 
-    document
-    .querySelectorAll(
-    ".under-image-text"
-    )
-    .forEach(txt=>{
+stopLoveMode();
 
-        txt.style.display="none";
-
-    });
-
-    document
-    .querySelectorAll(".gallery-img")
-    .forEach(img=>{
-
-        img.classList.remove(
-        "highlighted"
-        );
-
-    });
-
-    document.getElementById(
-    "backBtn"
-    ).style.display="none";
-
-    stopLoveMode();
-
-    document.body.style.background =
-    "linear-gradient(135deg,#ff758c,#ff7eb3)";
 }
-
-/* LOVE MODE */
 
 function startLoveMode(){
 
-    stopLoveMode();
+stopLoveMode();
 
-    document.body.style.background =
-    "linear-gradient(135deg,#ff0844,#ffb199)";
+loveInterval=setInterval(()=>{
 
-    loveInterval =
-    setInterval(()=>{
+let heart=document.createElement("div");
 
-        let heart =
-        document.createElement("div");
+heart.classList.add("heart");
 
-        heart.innerHTML =
-        "❤️💛";
+heart.innerHTML="❤️💛";
 
-        heart.classList.add(
-        "heart"
-        );
+heart.style.left=Math.random()*95+"vw";
 
-        heart.style.left =
-        Math.random()*95 +
-        "vw";
+document.body.appendChild(heart);
 
-        heart.style.fontSize =
-        (Math.random()*20+20)
-        + "px";
+setTimeout(()=>{
+heart.remove();
+},5000);
 
-        document.body
-        .appendChild(heart);
+},120);
 
-        setTimeout(()=>{
-
-            heart.remove();
-
-        },5000);
-
-    },120);
-
-    audio.onended = function(){
-
-        stopLoveMode();
-
-        document.body.style.background =
-        "linear-gradient(135deg,#ff758c,#ff7eb3)";
-    };
 }
 
 function stopLoveMode(){
 
-    if(loveInterval !== null){
+if(loveInterval!==null){
 
-        clearInterval(
-        loveInterval
-        );
+clearInterval(loveInterval);
 
-        loveInterval = null;
-    }
+loveInterval=null;
+
 }
 
-/* AMBIENT HEARTS */
+}
 
 setInterval(()=>{
 
-    if(loveInterval===null){
+if(loveInterval===null){
 
-        let heart =
-        document.createElement("div");
+let heart=document.createElement("div");
 
-        heart.innerHTML =
-        "❤️💛";
+heart.classList.add("heart");
 
-        heart.classList.add(
-        "heart"
-        );
+heart.innerHTML="❤️";
 
-        heart.style.left =
-        Math.random()*95 +
-        "vw";
+heart.style.left=Math.random()*95+"vw";
 
-        document.body
-        .appendChild(heart);
+document.body.appendChild(heart);
 
-        setTimeout(()=>{
+setTimeout(()=>{
+heart.remove();
+},5000);
 
-            heart.remove();
-
-        },5000);
-    }
+}
 
 },800);
 
@@ -862,3 +627,5 @@ setInterval(()=>{
 
 </body>
 </html>
+
+ 
