@@ -393,7 +393,7 @@ onclick="handleImageClick(this,'❤️ Forever My Favorite Person ❤️','song7
 
 </div>
 
-<div class="letter">
+<div class="letter" id="birthdayLetter" style="display:none;">
 
 <h2>💌 A Letter For You</h2>
 
@@ -418,6 +418,10 @@ I hope all your dreams come true and your life is filled with happiness, success
 💕 Happy Birthday 💕
 <br>
 💫 Stay Blessed Always 💫
+
+</p>
+
+</div>
 
 </p>
 
@@ -466,12 +470,14 @@ document.getElementById("countdown").innerHTML=
 "🎂 HAPPY BIRTHDAY 🎂";
 
 document.getElementById("birthdayMessage").style.display="block";
+document.getElementById("birthdayLetter").style.display="block";
 
 return;
 
 }
 
 document.getElementById("birthdayMessage").style.display="none";
+document.getElementById("birthdayLetter").style.display="none";
 
 const birthday=new Date("September 10, 2026 00:00:00");
 
