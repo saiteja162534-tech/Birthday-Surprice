@@ -3,175 +3,310 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Birthday Surprise ❤️</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&family=Lobster&family=Great+Vibes&family=Satisfy&display=swap" rel="stylesheet">
+
 <style>
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-    background:linear-gradient(135deg,#ff758c,#ff7eb3);
-    text-align:center;
-    color:white;
-    overflow-x:hidden;
-    transition: background 0.5s ease;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+text-align:center;
+color:white;
+overflow-x:hidden;
+transition:0.5s;
 }
 
-/* Welcome Page */
+/* START PAGE */
+
 #startPage{
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 }
 
 #startPage h1{
-    font-size:40px;
-    margin-bottom:20px;
+font-size:40px;
+margin-bottom:20px;
 }
 
 .buttons{
-    position:relative;
-    width:300px;
-    height:100px;
-    margin-top:20px;
+position:relative;
+width:300px;
+height:100px;
+margin-top:20px;
 }
 
 button{
-    padding:12px 25px;
-    border:none;
-    border-radius:10px;
-    font-size:18px;
-    cursor:pointer;
+padding:12px 25px;
+border:none;
+border-radius:10px;
+font-size:18px;
+cursor:pointer;
 }
 
 #yesBtn{
-    background:green;
-    color:white;
+background:green;
+color:white;
 }
 
 #noBtn{
-    background:red;
-    color:white;
-    position:absolute;
-    left:150px;
+background:red;
+color:white;
+position:absolute;
+left:150px;
 }
 
-/* Main Page */
+/* MAIN PAGE */
+
 #mainPage{
-    display:none;
-    padding:20px;
+display:none;
+padding:20px;
 }
 
 #countdown{
-    background:white;
-    color:#ff4d6d;
-    display:inline-block;
-    padding:20px;
-    border-radius:15px;
-    font-size:32px;
-    font-weight:bold;
-    margin:20px;
+background:white;
+color:#ff4d6d;
+display:inline-block;
+padding:20px;
+border-radius:15px;
+font-size:32px;
+font-weight:bold;
+margin:20px;
 }
+
+/* BIRTHDAY SPECIAL CARD */
+
+#birthdayMessage{
+display:none;
+margin-top:30px;
+}
+
+.birthday-title{
+font-family:'Great Vibes',cursive;
+font-size:70px;
+color:gold;
+text-shadow:
+0 0 10px gold,
+0 0 20px gold,
+0 0 40px gold;
+}
+
+.birthday-special-card{
+max-width:850px;
+margin:30px auto;
+padding:40px;
+border-radius:25px;
+
+background:
+linear-gradient(
+135deg,
+#fff8dc,
+#ffd700,
+#fff8dc
+);
+
+color:#7a4f01;
+
+font-family:'Great Vibes',cursive;
+font-size:36px;
+
+line-height:1.8;
+
+box-shadow:
+0 0 20px gold,
+0 0 40px gold,
+0 0 80px gold;
+}
+
+/* BACK BUTTON */
+
+#backBtn{
+display:none;
+background:gold;
+color:black;
+font-weight:bold;
+margin:20px;
+}
+
+/* GALLERY */
 
 .gallery{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:25px;
-    margin-top:20px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
+margin-top:20px;
 }
 
-/* Wrapper for every image so text appears directly below it */
-.gallery-item {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    width:220px;
+.gallery-item{
+display:flex;
+flex-direction:column;
+align-items:center;
+width:220px;
 }
 
 .gallery img{
-    width:220px;
-    height:220px;
-    object-fit:cover;
-    border-radius:15px;
-    cursor:pointer;
-    transition: 0.3s ease;
-    box-shadow:0 5px 15px rgba(0,0,0,0.3);
-    border: 4px solid transparent; /* Keeps sizing stable */
+width:220px;
+height:220px;
+object-fit:cover;
+border-radius:15px;
+cursor:pointer;
+transition:.4s;
+box-shadow:0 5px 15px rgba(0,0,0,.3);
+border:4px solid transparent;
 }
 
 .gallery img:hover{
-    transform:scale(1.05);
+transform:scale(1.05);
 }
 
-/* FORCE HIGHLIGHT VIA !IMPORTANT TO OVERRIDE ALL STYLES */
-.gallery img.highlighted {
-    transform: scale(1.05) !important;
-    box-shadow: 0 0 25px 8px gold !important;
-    border: 4px solid gold !important;
+.gallery img.highlighted{
+transform:scale(1.05);
+box-shadow:
+0 0 20px gold,
+0 0 40px gold,
+0 0 80px gold;
+border:4px solid gold;
 }
 
-/* Hidden text under specific images until active */
-.under-image-text {
-    display: none;
-    margin-top: 12px;
-    background: white;
-    color: #ff4d6d;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    width: 100%;
-    z-index: 10;
+/* MESSAGE BOX */
+
+.under-image-text{
+display:none;
+margin-top:15px;
+padding:15px;
+border-radius:15px;
+width:100%;
+animation:fadeIn 1s ease;
 }
+
+/* FONT THEMES */
+
+.gold-font{
+background:#fff8dc;
+color:#b8860b;
+font-family:'Great Vibes',cursive;
+font-size:30px;
+}
+
+.romantic-font{
+background:#ffe4e1;
+color:#ff1493;
+font-family:'Dancing Script',cursive;
+font-size:28px;
+}
+
+.cute-font{
+background:#fff0f5;
+color:#ff69b4;
+font-family:'Pacifico',cursive;
+font-size:26px;
+}
+
+.elegant-font{
+background:#f8f8ff;
+color:#9370db;
+font-family:'Lobster',cursive;
+font-size:28px;
+}
+
+.princess-font{
+background:#fffaf0;
+color:#d4af37;
+font-family:'Great Vibes',cursive;
+font-size:34px;
+}
+
+.sweet-font{
+background:#ffe4f2;
+color:#ff4d88;
+font-family:'Satisfy',cursive;
+font-size:28px;
+}
+
+.love-font{
+background:linear-gradient(
+135deg,
+#ff0844,
+#ffb199
+);
+color:white;
+font-family:'Great Vibes',cursive;
+font-size:35px;
+}
+
+/* LETTER */
 
 .letter{
-    margin-top:40px;
-    background:white;
-    color:black;
-    padding:20px;
-    border-radius:15px;
-    max-width:800px;
-    margin-left:auto;
-    margin-right:auto;
-    line-height:1.8;
+margin-top:40px;
+background:linear-gradient(
+135deg,
+#fff8dc,
+#ffd700
+);
+color:#8b6508;
+padding:30px;
+border-radius:20px;
+max-width:800px;
+margin-left:auto;
+margin-right:auto;
+line-height:2;
+font-size:24px;
+box-shadow:0 0 25px gold;
 }
 
-/* Floating Hearts Engine */
+/* HEARTS */
+
 .heart{
-    position: fixed;
-    bottom: -50px; /* Start completely off-screen at the bottom */
-    font-size: 24px;
-    animation: floatUp 5s linear forwards;
-    pointer-events: none;
-    z-index: 9999;
+position:fixed;
+bottom:-50px;
+font-size:24px;
+animation:floatUp 5s linear forwards;
+pointer-events:none;
+z-index:9999;
 }
 
-@keyframes floatUp {
-    0% {
-        transform: translateY(0) scale(0.8);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-110vh) scale(1.5); /* Clear past the top edge */
-        opacity: 0;
-    }
+@keyframes floatUp{
+0%{
+transform:translateY(0) scale(.8);
+opacity:1;
 }
+100%{
+transform:translateY(-110vh) scale(1.5);
+opacity:0;
+}
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
 </style>
 </head>
 
 <body>
-
-<div id="startPage">
+    <div id="startPage">
     <h1>🎉 A Special Surprise For You 🎉</h1>
     <p>Will you open this birthday surprise? ❤️</p>
+
     <div class="buttons">
         <button id="yesBtn">YES ❤️</button>
         <button id="noBtn">NO 😅</button>
@@ -179,217 +314,550 @@ button{
 </div>
 
 <div id="mainPage">
+
     <h1>💖 Birthday Countdown 💖</h1>
+
     <div id="countdown"></div>
+
+    <div id="birthdayMessage">
+
+        <h1 class="birthday-title">
+            🎂 Happy Birthday Saiii ❤️ 🎂
+        </h1>
+
+        <div class="birthday-special-card">
+
+            ✨ Today is finally your special day ✨
+
+            <br><br>
+
+            May your smile shine brighter than the stars.
+
+            <br><br>
+
+            May happiness follow you everywhere.
+
+            <br><br>
+
+            May all your dreams come true.
+
+            <br><br>
+
+            💖 Happy Birthday Once Again 💖
+
+        </div>
+
+    </div>
+
     <br>
+
     <button onclick="playMusic()">▶️ Play Music</button>
+
     <button onclick="pauseMusic()">⏸ Pause Music</button>
+
+    <button id="backBtn" onclick="showAllImages()">
+        ⬅ Back To Gallery
+    </button>
 
     <audio id="bgMusic">
         <source src="song.mpeg" type="audio/mp3">
     </audio>
 
-    <h2 style="margin-top:30px;">📸 Beautiful Memories</h2>
+    <h2 style="margin-top:30px;">
+        📸 Beautiful Memories
+    </h2>
 
     <div class="gallery">
 
         <div class="gallery-item">
-            <img src="img1.jpeg" class="gallery-img" onclick="handleImageClick(this, 'You are one of the most special people in my life ❤️', 'song3.mpeg', false)">
+
+            <img src="img1.jpeg"
+            class="gallery-img"
+            onclick="handleImageClick(
+            this,
+            '✨ No matter how old you grow, you will always be your father's little girl.
+
+His love has been your strength, his smile your encouragement, and his blessings your greatest gift.❤️ ✨',
+            'song1.mpeg',
+            false,
+            'gold-font'
+            )">
+
             <div class="under-image-text"></div>
+
         </div>
 
         <div class="gallery-item">
-            <img src="img2.jpeg" class="gallery-img" onclick="handleImageClick(this, 'Every memory with you is unforgettable 🌸', 'song2.mpeg', false)">
+
+            <img src="img2.jpeg"
+            class="gallery-img"
+            onclick="handleImageClick(
+            this,
+            '🌹Some people enter our lives as friends and stay forever as family.
+
+The laughter, secrets, and memories you share are treasures that time can never replace🌹',
+            'song2.mpeg',
+            false,
+            'romantic-font'
+            )">
+
             <div class="under-image-text"></div>
+
         </div>
 
         <div class="gallery-item">
-            <img src="img3.jpeg" class="gallery-img" onclick="handleImageClick(this, 'Your smile brightens every day 😊', 'song3.mpeg', false)">
+
+            <img src="img3.jpeg"
+            class="gallery-img"
+            onclick="handleImageClick(
+            this,
+            '😊 Your smile brightens every day Your smile is proof that happiness can be contagious.😊',
+            'song3.mpeg',
+            false,
+            'cute-font'
+            )">
+
             <div class="under-image-text"></div>
+
         </div>
 
         <div class="gallery-item">
-            <img src="img4.jpeg" class="gallery-img" onclick="handleImageClick(this, 'Thank you for always supporting me 💕', 'song4.mpeg', false)">
+
+            <img src="img4.jpeg"
+            class="gallery-img"
+            onclick="handleImageClick(
+            this,
+            '💕 youu don't need to be perfect to be amazing.
+
+Just being yourself is enough to make a difference in so many lives.
+
+Keep shining, because the world becomes a little brighter when you do.💕',
+            'song4.mpeg',
+            false,
+            'elegant-font'
+            )">
+
             <div class="under-image-text"></div>
+
         </div>
 
         <div class="gallery-item">
-            <img src="img5.jpeg" class="gallery-img" onclick="handleImageClick(this, 'You deserve all happiness in the world 🎂', 'song5.mpeg', false)">
+
+            <img src="img5.jpeg"
+            class="gallery-img"
+            onclick="handleImageClick(
+            this,
+            '👑 A beautiful smile can brighten a day, but yours brightens hearts.
+
+The sparkle in your eyes reflects the kindness and happiness you carry within. 👑',
+            'song5.mpeg',
+            false,
+            'princess-font'
+            )">
+
             <div class="under-image-text"></div>
+
         </div>
 
         <div class="gallery-item">
-            <img src="img6.jpeg" class="gallery-img" onclick="handleImageClick(this, 'Only a few more days until your big day 🎉', 'song6.mpeg', false)">
+
+            <img src="img6.jpeg"
+            class="gallery-img"
+            onclick="handleImageClick(
+            this,
+            '🎂 Your eyes tell stories that words cannot express, and your smile brings joy wherever it goes.
+
+In this traditional look, your beauty shines even more beautifully. 🎂',
+            'song6.mpeg',
+            false,
+            'sweet-font'
+            )">
+
             <div class="under-image-text"></div>
+
         </div>
 
         <div class="gallery-item">
-            <img src="img7.jpeg" class="gallery-img" onclick="handleImageClick(this, 'Forever my favorite person ❤️', 'song4.mpeg', true)">
+
+            <img src="img7.jpeg"
+            class="gallery-img"
+            onclick="handleImageClick(
+            this,
+            '❤️ Forever My Favorite Person Every memory with you is special and unforgettable.
+
+Thank you for being such an amazing part of my life. ❤️',
+            'song7.mpeg',
+            true,
+            'love-font'
+            )">
+
             <div class="under-image-text"></div>
+
         </div>
 
     </div>
 
     <div class="letter">
+
         <h2>💌 A Letter For You</h2>
+
         <p>
-            Dear Friend,
+
+            Dear Sai,
+
             <br><br>
-            Thank you for being such an amazing person. Happy Birthday in Advance saii💛
+
+            Thank you for being such an amazing person.
+
+            Happy Birthday in Advance 💛
+
             <br><br>
-            Our conversations may be few, but the happiness they bring is endless. Thank you for the beautiful memories.
+
+            Every memory with you is special.
+
+            Your smile, your kindness and your presence
+            make life more beautiful.
+
             <br><br>
-            I hope this bond lasts forever and that your life is filled with joy, success, and countless smiles.💕💛 💫
+
+            I hope all your dreams come true
+            and your life is filled with happiness,
+            success and endless smiles.
+
+            <br><br>
+
+            💕 Happy Birthday 💕
+            💫 Stay Blessed Always 💫
+
         </p>
+
     </div>
 
 </div>
+    <script>
 
-<script>
 /* YES BUTTON */
 document.getElementById("yesBtn").onclick = function(){
+
     alert("❤️ Welcome To Your Birthday Surprise ❤️");
-    document.getElementById("startPage").style.display = "none";
-    document.getElementById("mainPage").style.display = "block";
-}
+
+    document.getElementById("startPage").style.display =
+    "none";
+
+    document.getElementById("mainPage").style.display =
+    "block";
+};
 
 /* NO BUTTON RUNS AWAY */
+
 const noBtn = document.getElementById("noBtn");
-noBtn.addEventListener("mouseover", () => {
-    let x = Math.random() * (window.innerWidth - 120);
-    let y = Math.random() * (window.innerHeight - 120);
+
+noBtn.addEventListener("mouseover",()=>{
+
+    let x =
+    Math.random()*(window.innerWidth-120);
+
+    let y =
+    Math.random()*(window.innerHeight-120);
+
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
+
 });
 
+/* BIRTHDAY DATE */
+
+const birthday =
+new Date("September 10, 2026 00:00:00");
+
 /* COUNTDOWN */
-const birthday = new Date();
-birthday.setDate(birthday.getDate() + 100);
 
 function updateCountdown(){
+
     const now = new Date();
-    const diff = birthday - now;
+
+    const diff =
+    birthday - now;
 
     if(diff <= 0){
-        document.getElementById("countdown").innerHTML = "🎂 HAPPY BIRTHDAY 🎂";
+
+        document.getElementById("countdown")
+        .innerHTML =
+        "🎂 HAPPY BIRTHDAY 🎂";
+
+        document.getElementById(
+        "birthdayMessage"
+        ).style.display = "block";
+
         return;
     }
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+    const days =
+    Math.floor(diff/(1000*60*60*24));
 
-    document.getElementById("countdown").innerHTML =
-    days + " Days " + hours + " Hours " + mins + " Minutes " + secs + " Seconds";
+    const hours =
+    Math.floor(
+    (diff%(1000*60*60*24))
+    /(1000*60*60)
+    );
+
+    const mins =
+    Math.floor(
+    (diff%(1000*60*60))
+    /(1000*60)
+    );
+
+    const secs =
+    Math.floor(
+    (diff%(1000*60))
+    /1000
+    );
+
+    document.getElementById(
+    "countdown"
+    ).innerHTML =
+
+    days + " Days " +
+    hours + " Hours " +
+    mins + " Minutes " +
+    secs + " Seconds";
 }
-setInterval(updateCountdown, 1000);
+
+setInterval(updateCountdown,1000);
+
 updateCountdown();
 
-/* GLOBAL MUSIC CONFIGURATION */
-const audio = document.getElementById("bgMusic");
+/* AUDIO */
+
+const audio =
+document.getElementById("bgMusic");
+
 let loveInterval = null;
 
 function playMusic(){
+
     audio.play();
+
 }
 
 function pauseMusic(){
+
     audio.pause();
+
 }
 
-function playSong(songUrl) {
-    audio.src = songUrl; 
+function playSong(songUrl){
+
+    audio.src = songUrl;
+
     audio.load();
-    audio.play();        
+
+    audio.play();
 }
 
-/* MASTER CONTROLLER FOR HIGHLIGHTS & LOCALIZED TEXT CONTAINER */
-function handleImageClick(clickedImg, messageText, songUrl, isLoveMode) {
-    // 1. Instantly clear highlights from all images
-    const allImages = document.querySelectorAll('.gallery-img');
-    allImages.forEach(img => {
-        img.classList.remove('highlighted');
+/* SHOW ONLY CLICKED IMAGE */
+
+function handleImageClick(
+clickedImg,
+messageText,
+songUrl,
+isLoveMode,
+fontClass
+){
+
+    document
+    .querySelectorAll(".gallery-item")
+    .forEach(item=>{
+
+        item.style.display="none";
+
     });
 
-    // 2. Clear out and hide all text boxes
-    const allTexts = document.querySelectorAll('.under-image-text');
-    allTexts.forEach(txt => {
-        txt.style.display = 'none';
-        txt.innerHTML = '';
+    clickedImg.parentElement
+    .style.display="flex";
+
+    document.getElementById(
+    "backBtn"
+    ).style.display="inline-block";
+
+    document
+    .querySelectorAll(".gallery-img")
+    .forEach(img=>{
+
+        img.classList.remove(
+        "highlighted"
+        );
+
     });
 
-    // 3. Highlight the clicked image and reveal its specific text container
-    clickedImg.classList.add('highlighted');
-    const siblingTextBox = clickedImg.nextElementSibling;
-    siblingTextBox.innerHTML = messageText;
-    siblingTextBox.style.display = 'block';
+    clickedImg.classList.add(
+    "highlighted"
+    );
 
-    // 4. Handle state configurations for Love Mode
-    if (isLoveMode === true) {
-        startLoveMode();
-    } else {
-        stopLoveMode();
-        document.body.style.background = "linear-gradient(135deg,#ff758c,#ff7eb3)";
-    }
+    const textBox =
+    clickedImg.nextElementSibling;
 
-    // 5. Play corresponding audio
+    textBox.className =
+    "under-image-text " +
+    fontClass;
+
+    textBox.innerHTML =
+    messageText;
+
+    textBox.style.display =
+    "block";
+
     playSong(songUrl);
+
+    if(isLoveMode){
+
+        startLoveMode();
+
+    }else{
+
+        stopLoveMode();
+
+        document.body.style.background =
+        "linear-gradient(135deg,#ff758c,#ff7eb3)";
+    }
 }
 
-/* INTENSE LOVE MODE SYSTEM (Image 7 upward continuous stream) */
-function startLoveMode() {
-    stopLoveMode(); // Reset system loops if active
-    
-    document.body.style.background = "linear-gradient(135deg, #ff0844, #ffb199)";
-    
-    // Spawns up-moving symbols every 120ms rapidly
-    loveInterval = setInterval(() => {
-        let heart = document.createElement("div");
-        heart.innerHTML = "❤️💛"; 
-        heart.classList.add("heart");
-        
-        // Randomize spawn paths horizontally across viewport width
-        heart.style.left = Math.random() * 95 + "vw";
-        heart.style.fontSize = (Math.random() * 20 + 20) + "px"; 
-        
-        document.body.appendChild(heart);
+/* BACK TO GALLERY */
 
-        // Remove element directly out of the DOM after animation cycle concludes
-        setTimeout(() => {
+function showAllImages(){
+
+    document
+    .querySelectorAll(".gallery-item")
+    .forEach(item=>{
+
+        item.style.display="flex";
+
+    });
+
+    document
+    .querySelectorAll(
+    ".under-image-text"
+    )
+    .forEach(txt=>{
+
+        txt.style.display="none";
+
+    });
+
+    document
+    .querySelectorAll(".gallery-img")
+    .forEach(img=>{
+
+        img.classList.remove(
+        "highlighted"
+        );
+
+    });
+
+    document.getElementById(
+    "backBtn"
+    ).style.display="none";
+
+    stopLoveMode();
+
+    document.body.style.background =
+    "linear-gradient(135deg,#ff758c,#ff7eb3)";
+}
+
+/* LOVE MODE */
+
+function startLoveMode(){
+
+    stopLoveMode();
+
+    document.body.style.background =
+    "linear-gradient(135deg,#ff0844,#ffb199)";
+
+    loveInterval =
+    setInterval(()=>{
+
+        let heart =
+        document.createElement("div");
+
+        heart.innerHTML =
+        "❤️💛";
+
+        heart.classList.add(
+        "heart"
+        );
+
+        heart.style.left =
+        Math.random()*95 +
+        "vw";
+
+        heart.style.fontSize =
+        (Math.random()*20+20)
+        + "px";
+
+        document.body
+        .appendChild(heart);
+
+        setTimeout(()=>{
+
             heart.remove();
-        }, 5000);
-    }, 120);
 
-    // Event Hook: Turns off heart loop execution dynamically when song concludes
-    audio.onended = function() {
+        },5000);
+
+    },120);
+
+    audio.onended = function(){
+
         stopLoveMode();
-        document.body.style.background = "linear-gradient(135deg,#ff758c,#ff7eb3)";
+
+        document.body.style.background =
+        "linear-gradient(135deg,#ff758c,#ff7eb3)";
     };
 }
 
-function stopLoveMode() {
-    if (loveInterval !== null) {
-        clearInterval(loveInterval);
+function stopLoveMode(){
+
+    if(loveInterval !== null){
+
+        clearInterval(
+        loveInterval
+        );
+
         loveInterval = null;
     }
 }
 
-/* STANDARD STEADY BACKGROUND HEARTS */
-setInterval(() => {
-    // Only launch background ambient hearts if Image 7's love mode isn't occupying execution space
-    if (loveInterval === null) {
-        let heart = document.createElement("div");
-        heart.innerHTML = "❤️💛";
-        heart.classList.add("heart");
-        heart.style.left = Math.random() * 95 + "vw";
-        document.body.appendChild(heart);
+/* AMBIENT HEARTS */
 
-        setTimeout(() => {
+setInterval(()=>{
+
+    if(loveInterval===null){
+
+        let heart =
+        document.createElement("div");
+
+        heart.innerHTML =
+        "❤️💛";
+
+        heart.classList.add(
+        "heart"
+        );
+
+        heart.style.left =
+        Math.random()*95 +
+        "vw";
+
+        document.body
+        .appendChild(heart);
+
+        setTimeout(()=>{
+
             heart.remove();
-        }, 5000);
+
+        },5000);
     }
-}, 800);
+
+},800);
+
 </script>
 
 </body>
