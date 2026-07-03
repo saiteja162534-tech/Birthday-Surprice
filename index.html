@@ -497,18 +497,6 @@ function pauseMusic(){
 audio.pause();
 }
 
-function playSong(songUrl){
-
-audio.pause();
-
-audio.src=songUrl;
-
-audio.load();
-
-audio.play().catch(()=>{});
-
-}
-
 let loveInterval=null;
 
 function handleImageClick(
@@ -544,6 +532,21 @@ stopLoveMode();
 }
 
 }
+  function showAllImages(){
+    document.querySelectorAll(".gallery-item").forEach(item=>{
+      item.style.display="flex";
+      });
+    document.querySelectorAll(".under-image-text").forEach(txt=>{
+      txt.style.display="none";
+      });
+    document.getElementById("backBtn").style.display="none";
+    /* STOP CURRENT SONG */
+    audio.pause();
+    audio.currentTime = 0;
+    /* RESET MAIN SONG */
+    audio.src = "song.mpeg";
+    stopLoveMode();
+    }
 
 function playSong(songUrl){
 
