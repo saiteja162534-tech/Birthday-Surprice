@@ -545,19 +545,16 @@ stopLoveMode();
 
 }
 
-function showAllImages(){
+function playSong(songUrl){
 
-document.querySelectorAll(".gallery-item").forEach(item=>{
-item.style.display="flex";
-});
+audio.pause();
+audio.currentTime = 0;
 
-document.querySelectorAll(".under-image-text").forEach(txt=>{
-txt.style.display="none";
-});
+audio.src = songUrl;
 
-document.getElementById("backBtn").style.display="none";
+audio.load();
 
-stopLoveMode();
+audio.play().catch(()=>{});
 
 }
 
